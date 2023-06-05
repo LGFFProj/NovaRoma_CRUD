@@ -14,6 +14,8 @@ router.put('/tasks/:id/update-status', TasksController.updateStatus)
 
 //Rotas das Agendas
 router.post('/agenda', AgendasController.save)
+router.get('/agenda/:id', AgendasController.remove)
+router.get('/agendas/', AgendasController.listar)
 
 
 module.exports = router;

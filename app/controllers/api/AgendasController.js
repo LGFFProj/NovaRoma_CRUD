@@ -28,10 +28,43 @@ function AgendasController() {
                 campo: err.errors[0].path
             })
         })
+    };
+
+    function remove(req, res) {
+        const id = req.params.id;
+
+        Agenda.findOne({ where: { id: id }, raw: true })
+        .then((data) => {
+            
+            if (!data) {
+                return res.status(404).send({
+                    message: "Sei onde tá isso não truta"
+                })
+            };
+
+            Agenda.destroy({ where: { id: id } })
+            .then(() => {
+                res.status(200).json({
+                    message: "AGENDA EXTERMINADA, AGORA ME DIGA ONDE ESTÁ JHON CONNOR"
+                })
+            })
+            .catch((err) => console.log(err))
+        })
+        .catch((err) => res.json(err));
+    };
+
+    async function listar(req, res){
+        Agenda.findAll({ raw: true })
+        .then(( data ) => {
+            res.status(200).json(data)
+        })
+        .catch((err) => console.log(err))
     }
 
     return {
-        save
+        save,
+        remove,
+        listar
     }
 
 }
