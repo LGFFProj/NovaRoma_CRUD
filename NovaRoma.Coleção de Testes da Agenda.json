@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "25833895-c812-456a-bdd1-e8dbd8727df3",
+		"name": "NovaRoma",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Listar Agendas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/agendas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"agendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Agenda",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Descrição está preenchida\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.descricao).to.length > 0",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/agendas/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"agendas",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar Contato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"TESTE\",\r\n    \"celular\": \"8199999999\",\r\n    \"email\": \"aluno@gmail.com\",\r\n    \"rua\": \"Jose Maira da silva\",\r\n    \"numero\": \"99999\",\r\n    \"bairro\": \"Boa Vista\",\r\n    \"cidade\": \"Caruaru\",\r\n    \"cep\": \"55000550\",\r\n    \"estado\": \"PE\",\r\n    \"complemento\": \"TESTE DE CONTATO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/agendas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"agendas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar Contato",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"TESTE\",\r\n    \"celular\": \"8199999999\",\r\n    \"email\": \"heheyta@gmail.com\",\r\n    \"rua\": \"Jose Maira da silva\",\r\n    \"numero\": \"99999\",\r\n    \"bairro\": \"Boa Vista\",\r\n    \"cidade\": \"Caruaru\",\r\n    \"cep\": \"55000550\",\r\n    \"estado\": \"PE\",\r\n    \"complemento\": \"TESTE DE CONTATO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/agendas/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"agendas",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover Contato",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/tasks/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"tasks",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
